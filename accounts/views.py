@@ -37,6 +37,7 @@ def login(request):
     user = authenticate(username=username, password=password)
 
     if user is not None:
+           return Response({"error": "Invalid credentials"}, status=400)
         
         refresh = RefreshToken.for_user(user)
 
